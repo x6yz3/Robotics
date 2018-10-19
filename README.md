@@ -18,3 +18,7 @@ to plot diagram. We can use "Ziegler-Nichols" heuristic method to tune the PID p
 — remember this gain as ku;</br>
 • set kp = 0.6ku, ki = 2kp/Pu, and kd = kpPu/8.</br>
 
+### Calculating a Covariance Matrix
+It should be a python file to read from txt files, which contains all 10 times experiment final point(x_i,y_i) result in it.
+Then calculate a covariance matrix using these data.
+
