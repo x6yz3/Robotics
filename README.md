@@ -11,10 +11,10 @@ For week 2 lab, we have tasks:
 
 ### Controller Tuning
 For tuning the parameters, we should do several experiments. Firstly, we should test the
-robot to go straight to tune parameters such as <i>maxRotationAcceleration,maxRotationSpeed </i>
+robot to go straight to tune parameters such as <i>maxRotationAcceleration,maxRotationSpeed </i></br>
 Then, we should set angle (30°, 60°, 90°, 180°), keep track of logfile of reference angle and actual angle,
-to plot diagram. We can use "Ziegler-Nichols" heuristic method to tune the PID parameter.
+to plot diagram. We can use "Ziegler-Nichols" heuristic method to tune the PID parameter.</br>
 • set ki and kd to zero. Increase kp until the system starts oscillating with period Pu (in seconds)
-— remember this gain as ku;
-• set kp = 0.6ku, ki = 2kp/Pu, and kd = kpPu/8.
+— remember this gain as ku;</br>
+• set kp = 0.6ku, ki = 2kp/Pu, and kd = kpPu/8.</br>
 
