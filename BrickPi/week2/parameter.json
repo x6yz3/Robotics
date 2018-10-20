@@ -1,0 +1,27 @@
+{
+
+  "LeftMotor":{
+    "maxRotationAcceleration" : 6.0,
+    "maxRotationSpeed" : 12.0,
+    "feedForwardGain" : 12.75,
+    "minPWM" : 18.0,
+    "pidParameters.minOutput" : -255,
+    "pidParameters.maxOutput" : 255,
+    "pidParameters.k_p" : 100.0,
+    "pidParameters.k_i" : 0.0,
+    "pidParameters.k_d" : 0.0
+  },
+
+  "RightMotor":{
+    "maxRotationAcceleration" : 6.0,
+    "maxRotationSpeed" : 12.0,
+    "feedForwardGain" : 12.75,
+    "minPWM" : 18.0,
+    "pidParameters.minOutput" : -255,
+    "pidParameters.maxOutput" : 255,
+    "pidParameters.k_p" : 100.0,
+    "pidParameters.k_i" : 0.0,
+    "pidParameters.k_d" : 0.0
+  }
+
+}

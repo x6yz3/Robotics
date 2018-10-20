@@ -5,27 +5,37 @@ interface=brickpi.Interface()
 interface.initialize()
 
 motors = [0,1]
-speed0 = 20.0
-speed1 = 6
+speed = 0
 
 interface.motorEnable(motors[0])
 interface.motorEnable(motors[1])
 
-motorParams = interface.MotorAngleControllerParameters()
-motorParams.maxRotationAcceleration = 6.0
-motorParams.maxRotationSpeed = 12.0
-motorParams.feedForwardGain = 255/20.0
-motorParams.minPWM = 18.0
-motorParams.pidParameters.minOutput = -255
-motorParams.pidParameters.maxOutput = 255
-motorParams.pidParameters.k_p = 100.0
-motorParams.pidParameters.k_i = 0.0
-motorParams.pidParameters.k_d = 0.0
+LeftParams = interface.MotorAngleControllerParameters()
+LeftParams.maxRotationAcceleration = 6.0
+LeftParams.maxRotationSpeed = 12.0
+LeftParams.feedForwardGain = 255/20.0
+LeftParams.minPWM = 18.0
+LeftParams.pidParameters.minOutput = -255
+LeftParams.pidParameters.maxOutput = 255
+LeftParams.pidParameters.k_p = 100.0
+LeftParams.pidParameters.k_i = 0.0
+LeftParams.pidParameters.k_d = 0.0
 
-interface.setMotorAngleControllerParameters(motors[0],motorParams)
-interface.setMotorAngleControllerParameters(motors[1],motorParams)
+RightParams = interface.MotorAngleControllerParameters()
+RightParams.maxRotationAcceleration = 6.0
+RightParams.maxRotationSpeed = 12.0
+RightParams.feedForwardGain = 255/20.0
+RightParams.minPWM = 18.0
+RightParams.pidParameters.minOutput = -255
+RightParams.pidParameters.maxOutput = 255
+RightParams.pidParameters.k_p = 100.0
+RightParams.pidParameters.k_i = 0.0
+RightParams.pidParameters.k_d = 0.0
 
-interface.setMotorRotationSpeedReferences(motors,[speed0,speed1])
+interface.setMotorAngleControllerParameters(motors[0],LeftParams)
+interface.setMotorAngleControllerParameters(motors[1],RightParams)
+
+interface.setMotorRotationSpeedReferences(motors, speed)
 
 print "Press Ctrl+C to exit"
 while True:
