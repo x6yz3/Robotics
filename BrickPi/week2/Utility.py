@@ -5,11 +5,12 @@ import json
 class Car:
     def __init__(self, interface):
         self.interface = interface
-        self.motor = [0,1]
+        self.motors = [0,1]
         self.motorParams = {}
-
-        self.interface.motorEnable(motors[0])
-        self.interface.motorEnable(motors[1])
+        # motors [0,1]是predefined 0 对应 motor port_A, 1 对应 motor port_B
+        # 一个brickpi的core是interface 所有的控制 都是基于这个interface进行的
+        self.interface.motorEnable(self.motors[0])
+        self.interface.motorEnable(self.motors[1])
 
         with open('parameter.json', 'r') as f:
             params = json.load(f)
@@ -38,3 +39,17 @@ class Car:
 
         self.interface.setMotorAngleControllerParameters(self.motors[0], self.motorParams['Left'] )
         self.interface.setMotorAngleControllerParameters(self.motors[1], self.motorParams['Right'])
+
+    def moveForward(self, speed):
+        self.interface.setMotorRotationSpeedReferences(self.motors, speed)
+
+    def rotate(self, angle):
+        wheel_angle = 5.243 * angle/90
+        self.interface.increaseMotorAngleReferences(self.motors,[wheel_angle, -wheel_angle])
+        while not self.interface.motorAngleReferencesReached(self.motors):
+            motorAngles = self.interface.getMotorAngles(self.motors)
+            if motorAngles:
+                print "Motor angles: ", motorAngles[0][0], ", ", motorAngles[1][0]
+            time.sleep(0.1)
+
+        print "Destination reached!"
