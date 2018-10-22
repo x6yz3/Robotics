@@ -9,7 +9,7 @@ For week 2 lab, we have tasks:
 - [ ] Driving Accurately in a Square and Observing Drift (9 Marks)  
 - [ ] Calculating a Covariance Matrix (4 Marks)  
 ### Code Refactoring
-To improve code readability and reduce complexity. The example code has been refactored. First, it is miscellaneous if we want to add left or right motor's parameter but copy this code block:![enter image description here](https://i.loli.net/2018/10/20/5bcb4d5891a8d.png){:height="50%" width="50%"}
+To improve code readability and reduce complexity. The example code has been refactored. First, it is miscellaneous if we want to add left or right motor's parameter but copy this code block:![enter image description here](https://i.loli.net/2018/10/20/5bcb4d5891a8d.png){:height="30%" width="30%"}
 What we did is to build a "json" file which contains all the parameter information in and everytime read from this "json" file.
 ### Controller Tuning  
 For tuning the parameters, we should do several experiments. Firstly, we should test the  
