@@ -3,19 +3,46 @@ import time
 import math
 from Utility import Car
 
+def fun(mode):
+
+    return
+
 interface=brickpi.Interface()
 interface.initialize()
 Robot = Car(interface)
+mode = int(input("Which parameter you want to tune?\nType 1 for Kp, 2 for Ki, 3 for Kd"))
+min = int(input("Enter minimum:"))
+max = int(input("ENter maximum:"))
+increment = int(input("Enter incremental value:"))
+dict = {'min':min, 'max': max, 'increment': increment, 'mode':mode}
 
-kp_min = float(input("Enter minimum Kp:"))
-kp_max = float(input("Enter maximum Kp:"))
-increment = float(input("Enter incremental value:"))
 
-for i in range(kp_min, kp_max, increment):
-    Robot.motorParams["Left"].pidParameters.k_p = i
-    input_angle = float(input("Enter a angle to rotate (in radians): "))
-    angle = math.radians(input_angle)
-    Robot.wheel_rotate(angle, i)
+input_angle = float(input("Enter a angle to rotate (in degree): "))
+
+with open("logs/logs_name.txt", "w") as f:
+    for i in range(min, max, increment, input_angle):
+        if dict['mode'] == 1:
+            Robot.motorParams["Left"].pidParameters.k_p = i
+            Robot.motorParams["Right"].pidParameters.k_p = i
+            Robot.interface.setMotorAngleControllerParameters(Robot.motors[0], Robot.motorParams["Left"])
+            Robot.interface.setMotorAngleControllerParameters(Robot.motors[1], Robot.motorParams["Right"])
+            name = "motor_angle_" + str(input_angle) + "Kp_value_" + str(i)
+        elif dict['mode'] == 2:
+            Robot.motorParams["Left"].pidParameters.k_i = i
+            Robot.motorParams["Right"].pidParameters.k_i = i
+            Robot.interface.setMotorAngleControllerParameters(Robot.motors[0], Robot.motorParams["Left"])
+            Robot.interface.setMotorAngleControllerParameters(Robot.motors[1], Robot.motorParams["Right"])
+            name = "motor_angle_" + str(input_angle) + "Ki_value_" + str(i)
+        elif dict['mode'] == 3:
+            Robot.motorParams["Left"].pidParameters.k_d = i
+            Robot.motorParams["Right"].pidParameters.k_d = i
+            Robot.interface.setMotorAngleControllerParameters(Robot.motors[0], Robot.motorParams["Left"])
+            Robot.interface.setMotorAngleControllerParameters(Robot.motors[1], Robot.motorParams["Right"])
+            name = "motor_angle_" + str(input_angle) + "Kd_value_" + str(i)
+        f.write(name)
+        angle = math.radians(input_angle)
+        Robot.wheel_rotate(angle, name)
+        time.sleep(2)
 
 
 interface.terminate()

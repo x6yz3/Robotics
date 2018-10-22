@@ -41,11 +41,8 @@ class Car:
     def moveForward(self, speed):
         self.interface.setMotorRotationSpeedReferences(self.motors, [speed, speed])
 
-    def wheel_rotate(self, angle, kp_value):
-        name = "motor_angle_" + str(math.degrees(angle)) +"Kp_value_"+ str(kp_value)
+    def wheel_rotate(self, angle, name):
         self.interface.startLogging("logs/Original/"+name + ".log")
-        with open("logs/logs_name.txt", "w") as f:
-            f.write(name)
         self.interface.increaseMotorAngleReferences(self.motors,[angle, angle])
         while not self.interface.motorAngleReferencesReached(self.motors):
             motorAngles = self.interface.getMotorAngles(self.motors)
@@ -58,6 +55,8 @@ class Car:
 
     def left90(self):
         angle = 5.0176
+        resistance = 0.3
+        angle += resistance
         self.interface.increaseMotorAngleReferences(self.motors, [angle, -angle])
         while not self.interface.motorAngleReferencesReached(self.motors):
             motorAngles = self.interface.getMotorAngles(self.motors)
@@ -65,6 +64,9 @@ class Car:
 
     def moveLeft(self, angle):
         pass
+
+    def moveright(self,angle):
+        self.moveLeft(-angle)
 
     def moveDistance(self, distance):
         C = 13.502
@@ -74,3 +76,4 @@ class Car:
         while not self.interface.motorAngleReferencesReached(self.motors):
             motorAngles = self.interface.getMotorAngles(self.motors)
         print "Destination reached!"
+ 
