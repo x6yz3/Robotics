@@ -54,12 +54,17 @@ class Car:
             time.sleep(0.1)
         print "Destination reached!"
         self.interface.stopLogging()
+
+
     def left90(self):
         angle = 5.0176
         self.interface.increaseMotorAngleReferences(self.motors, [angle, -angle])
         while not self.interface.motorAngleReferencesReached(self.motors):
             motorAngles = self.interface.getMotorAngles(self.motors)
         print "Destination reached!"
+
+    def moveLeft(self, angle):
+        pass
 
     def moveDistance(self, distance):
         C = 13.502
