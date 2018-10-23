@@ -39,10 +39,10 @@ with open("logs/logs_name.txt", "w") as f:
             Robot.interface.setMotorAngleControllerParameters(Robot.motors[0], Robot.motorParams["Left"])
             Robot.interface.setMotorAngleControllerParameters(Robot.motors[1], Robot.motorParams["Right"])
             name = "motor_angle_" + str(input_angle) + "Kd_value_" + str(i)
-        f.write(name)
+        f.write(name+'\n')
         angle = math.radians(input_angle)
         Robot.wheel_rotate(angle, name)
-        time.sleep(2)
+        time.sleep(0.5)
 
 
 interface.terminate()

@@ -66,5 +66,7 @@ if __name__ == '__main__':
         for name in f.readlines():
             name = name.strip('\n')
             print(name)
+            processLog('logs/Original/' + name + '.log')
+            drawfigure('logs/Original/' + name + '.log')
             # processLog('logs/Original/motor_angle_360.0Kd_value_120.log')
             # drawfigure('logs/Original/motor_angle_360.0Kd_value_120.log')

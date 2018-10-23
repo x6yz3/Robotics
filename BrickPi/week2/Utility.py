@@ -55,7 +55,7 @@ class Car:
 
     def left90(self):
         angle = 5.0176
-        resistance = 0.3
+        resistance = 0.45
         angle += resistance
         self.interface.increaseMotorAngleReferences(self.motors, [angle, -angle])
         while not self.interface.motorAngleReferencesReached(self.motors):
