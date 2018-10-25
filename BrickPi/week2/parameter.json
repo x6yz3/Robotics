@@ -7,9 +7,9 @@
     "minPWM" : 60.0,
     "pidParameters.minOutput" : -255,
     "pidParameters.maxOutput" : 255,
-    "pidParameters.k_p" : 10.0,
-    "pidParameters.k_i" : 0.0,
-    "pidParameters.k_d" : 0.0
+    "pidParameters.k_p" : 450.0,
+    "pidParameters.k_i" : 250.0,
+    "pidParameters.k_d" : 112.5
   },
 
   "Right":{
@@ -19,9 +19,9 @@
     "minPWM" : 60.0,
     "pidParameters.minOutput" : -255,
     "pidParameters.maxOutput" : 255,
-    "pidParameters.k_p" : 10.0,
-    "pidParameters.k_i" : 0.0,
-    "pidParameters.k_d" : 0.0
+    "pidParameters.k_p" : 450.0,
+    "pidParameters.k_i" : 250.0,
+    "pidParameters.k_d" : 112.5
   }
 
 }
