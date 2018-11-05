@@ -1,7 +1,7 @@
 import brickpi
 import time
 import math
-from Utility import Car
+from BrickPi.Utility import Car
 
 def fun(mode):
 

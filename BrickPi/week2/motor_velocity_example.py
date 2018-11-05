@@ -1,6 +1,6 @@
 import brickpi
 import time
-from Utility import Car
+from BrickPi.Utility import Car
 interface=brickpi.Interface()
 interface.initialize()
 
